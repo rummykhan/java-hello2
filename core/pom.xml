@@ -36,6 +36,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/../libs/lombok-1.18.18.jar</systemPath>
         </dependency>
 
         <dependency>
