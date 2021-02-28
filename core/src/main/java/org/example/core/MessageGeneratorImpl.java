@@ -10,7 +10,6 @@ import javax.annotation.PostConstruct;
 @Component
 public class MessageGeneratorImpl implements MessageGenerator {
 
-
     private final Game game;
 
     @Autowired
