@@ -2,6 +2,7 @@ package org.example.core.config;
 
 import org.example.core.GuessCount;
 import org.example.core.MaxNumber;
+import org.example.core.MinNumber;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,9 @@ public class GameConfig {
     @Value("${game.guessCount:5}")
     private int guessCount;
 
+    @Value("${game.minNumber:5}")
+    private int minNumber;
+
     @Bean
     @MaxNumber
     public int getMaxNumber() {
@@ -27,5 +31,11 @@ public class GameConfig {
     @GuessCount
     public int getGuessCount() {
         return this.guessCount;
+    }
+
+    @Bean
+    @MinNumber
+    public int getMinNumber(){
+        return this.minNumber;
     }
 }
