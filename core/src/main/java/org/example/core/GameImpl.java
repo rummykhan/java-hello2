@@ -1,5 +1,8 @@
 package org.example.core;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,9 +12,10 @@ import javax.annotation.PreDestroy;
 
 @Slf4j
 @Component
+@Getter
 public class GameImpl implements Game {
 
-    // == fields ==
+    @Getter(AccessLevel.NONE)
     private final NumberGenerator numberGenerator;
 
     @Autowired
@@ -19,11 +23,13 @@ public class GameImpl implements Game {
     private int guessCount;
 
     private int number;
-    private int guess;
     private int smallest;
     private int biggest;
     private int remainingGuesses;
     private boolean validNumberRange = true;
+
+    @Setter
+    private int guess;
 
     @Autowired
     public GameImpl(NumberGenerator numberGenerator) {
@@ -47,63 +53,22 @@ public class GameImpl implements Game {
         log.info("in Game preDestroy(): {}", this.numberGenerator);
     }
 
-    // == public methods ==
-    @Override
-    public int getNumber() {
-        return number;
-    }
-
-    @Override
-    public int getGuess() {
-        return guess;
-    }
-
-    @Override
-    public void setGuess(int guess) {
-        this.guess = guess;
-    }
-
-    @Override
-    public int getSmallest() {
-        return smallest;
-    }
-
-    @Override
-    public int getBiggest() {
-        return biggest;
-    }
-
-    @Override
-    public int getRemainingGuesses() {
-        return remainingGuesses;
-    }
-
-    @Override
-    public int getGuessCount() {
-        return guessCount;
-    }
-
     @Override
     public void check() {
 
         checkValidNumberRange();
 
-        if(validNumberRange) {
-            if(guess > number) {
-                biggest = guess -1;
+        if (validNumberRange) {
+            if (guess > number) {
+                biggest = guess - 1;
             }
 
-            if(guess < number) {
+            if (guess < number) {
                 smallest = guess + 1;
             }
         }
 
         remainingGuesses--;
-    }
-
-    @Override
-    public boolean isValidNumberRange() {
-        return validNumberRange;
     }
 
     @Override
