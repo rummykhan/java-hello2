@@ -1,7 +1,7 @@
 package org.example.console;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.core.AppConfig;
+import org.example.core.config.AppConfig;
 import org.example.core.MessageGenerator;
 import org.example.core.NumberGenerator;
 import org.springframework.context.ConfigurableApplicationContext;

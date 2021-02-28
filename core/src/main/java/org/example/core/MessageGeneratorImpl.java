@@ -11,8 +11,6 @@ public class MessageGeneratorImpl implements MessageGenerator {
     @Autowired
     private Game game;
 
-    private int guessCount = 10;
-
     @PostConstruct
     public void init() {
         log.info("Game = {}", game);
@@ -25,7 +23,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
                 .concat(String.valueOf(game.getSmallest()))
                 .concat(" and ")
                 .concat(String.valueOf(game.getBiggest()))
-                .concat(". Can you guess it");
+                .concat(". Can you guess it ?");
     }
 
     @Override
@@ -41,7 +39,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
                     .concat("The number was")
                     .concat(" ")
                     .concat(String.valueOf(game.getNumber()));
-        } else if (game.getRemainingGuesses() == guessCount) {
+        } else if (game.getRemainingGuesses() == game.getGuessCount()) {
             return "What is your first guess";
         }
 
@@ -53,6 +51,6 @@ public class MessageGeneratorImpl implements MessageGenerator {
         return direction
                 .concat("! You have ")
                 .concat(String.valueOf(game.getRemainingGuesses()))
-                .concat(" guess left");
+                .concat(" guesses left");
     }
 }
