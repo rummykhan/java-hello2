@@ -1,7 +1,7 @@
 package org.example.console;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.core.config.AppConfig;
+import org.example.core.config.GameConfig;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -12,7 +12,7 @@ public class Main {
         log.info("Guess The Number Game");
 
         // create context (container)
-        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(GameConfig.class);
 
         // close context (container)
         context.close();

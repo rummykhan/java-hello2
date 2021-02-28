@@ -5,11 +5,13 @@ import org.example.core.MaxNumber;
 import org.example.core.MinNumber;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource("classpath:config/game.properties")
+@ComponentScan(basePackages = "org.example")
 public class GameConfig {
 
     @Value("${game.maxNumber:20}")
